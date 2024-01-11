@@ -2,10 +2,9 @@
 
 namespace Alvleont\FilamentPrintables;
 
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Alvleont\FilamentPrintables\Commands\FilamentPrintablesCommand;
 
 class FilamentPrintablesServiceProvider extends PackageServiceProvider
 {
