@@ -23,38 +23,15 @@ You can install the package via composer:
 composer require alvleont/filament-printables
 ```
 
-You can publish and run the migrations with:
+You can publish and run the migrations and config file need to run using:
 
 ```bash
-php artisan vendor:publish --tag="filament-printables-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-printables-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-printables-views"
+php artisan filament-printables:install
 ```
 
 ## Usage
 
-```php
-$filamentPrintables = new Alvleont\FilamentPrintables();
-echo $filamentPrintables->echoPhrase('Hello, Alvleont!');
-```
+Docs in progress... Sorry for that.
 
 ## Testing
 
@@ -76,8 +53,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Alvaro León Torres](https://github.com/alvleont)
-- [All Contributors](../../contributors)
+-   [Alvaro León Torres](https://github.com/alvleont)
+-   [All Contributors](../../contributors)
 
 ## License
 

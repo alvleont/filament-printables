@@ -2,8 +2,12 @@
 
 namespace Alvleont\FilamentPrintables;
 
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
+use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Assets\AlpineComponent;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Alvleont\FilamentPrintables\Commands\FilamentPrintablesCommand;
 
 class FilamentPrintablesServiceProvider extends PackageServiceProvider
@@ -20,6 +24,14 @@ class FilamentPrintablesServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_filament-printables_table')
-            ->hasCommand(FilamentPrintablesCommand::class);
+            ->hasTranslations()
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->publishMigrations()
+                    ->askToRunMigrations()
+                    ->copyAndRegisterServiceProviderInApp()
+                    ->askToStarRepoOnGitHub('alvleont/filament-printables');
+            });
     }
 }
