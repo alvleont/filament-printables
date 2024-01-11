@@ -2,10 +2,9 @@
 
 namespace Alvleont\FilamentPrintables\Models;
 
+use Alvleont\FilamentPrintables\Enums\PrintableTypes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Alvleont\FilamentPrintables\Enums\PrintableTypes;
-use Alvleont\FilamentPrintables\Enums\PrintableFormats;
 
 class FilamentPrintable extends Model
 {

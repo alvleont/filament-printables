@@ -12,6 +12,6 @@ enum PrintableTypes: string implements HasLabel
 
     public function getLabel(): ?string
     {
-        return (__('filament-printables::filament-printables.resource.fields.type.options.' . $this->value));
+        return __('filament-printables::filament-printables.resource.fields.type.options.'.$this->value);
     }
 }
