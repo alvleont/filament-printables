@@ -2,13 +2,11 @@
 
 namespace Alvleont\FilamentPrintables;
 
-use Livewire\Livewire;
+use Alvleont\FilamentPrintables\Commands\FilamentPrintablesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Assets\AlpineComponent;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Alvleont\FilamentPrintables\Commands\FilamentPrintablesCommand;
 
 class FilamentPrintablesServiceProvider extends PackageServiceProvider
 {
