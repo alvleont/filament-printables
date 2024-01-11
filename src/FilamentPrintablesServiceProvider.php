@@ -2,10 +2,7 @@
 
 namespace Alvleont\FilamentPrintables;
 
-use Alvleont\FilamentPrintables\Commands\FilamentPrintablesCommand;
 use Spatie\LaravelPackageTools\Package;
-use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Assets\AlpineComponent;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentPrintablesServiceProvider extends PackageServiceProvider

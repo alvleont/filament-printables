@@ -8,7 +8,6 @@ use Filament\Panel;
 
 class FilamentPrintables implements Plugin
 {
-
     public function getId(): string
     {
         return 'blog';

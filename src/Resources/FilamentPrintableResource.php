@@ -2,19 +2,19 @@
 
 namespace Alvleont\FilamentPrintables\Resources;
 
+use Alvleont\FilamentPrintables\Enums\PrintableFormats;
+use Alvleont\FilamentPrintables\Enums\PrintableTypes;
+use Alvleont\FilamentPrintables\Models\FilamentPrintable;
+use Alvleont\FilamentPrintables\Resources\FilamentPrintableResource\Pages;
 use Closure;
+use Filament\Facades\Filament;
 use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Filament\Facades\Filament;
-use Filament\Resources\Resource;
-use Alvleont\FilamentPrintables\Enums\PrintableTypes;
-use Alvleont\FilamentPrintables\Enums\PrintableFormats;
-use Alvleont\FilamentPrintables\Models\FilamentPrintable;
 use Wiebenieuwenhuis\FilamentCodeEditor\Components\CodeEditor;
-use Alvleont\FilamentPrintables\Resources\FilamentPrintableResource\Pages;
 
 class FilamentPrintableResource extends Resource
 {
@@ -60,7 +60,7 @@ class FilamentPrintableResource extends Resource
                         Forms\Components\Select::make('type')
                             ->required()
                             ->label(__('filament-printables::filament-printables.resource.fields.type.label'))
-                            ->options(PrintableTypes::class,),
+                            ->options(PrintableTypes::class),
                         Forms\Components\Select::make('format')
                             ->required()
                             ->label(__('filament-printables::filament-printables.resource.fields.format.label'))
@@ -73,7 +73,7 @@ class FilamentPrintableResource extends Resource
                                 $subjects = [];
                                 $exceptResources = [self::class];
                                 $removedExcludedResources = collect(Filament::getResources())->filter(function ($resource) use ($exceptResources) {
-                                    return !in_array($resource, $exceptResources);
+                                    return ! in_array($resource, $exceptResources);
                                 });
 
                                 foreach ($removedExcludedResources as $resource) {
