@@ -75,7 +75,7 @@ class PrintInput extends Action
             $this->format = $data['format'];
         }
 
-        if ($this->printable == 0) {
+        if ($this->printable == false) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
@@ -92,7 +92,7 @@ class PrintInput extends Action
                             echo Pdf::loadHtml(
                                 Blade::render($printable->template_view, $this->recordData, deleteCachedView: true)
                             )->stream();
-                        }, $printable->slug.'.pdf');
+                        }, $printable->slug . '.pdf');
 
                     case 'xlsx':
 
@@ -100,7 +100,7 @@ class PrintInput extends Action
 
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, $this->recordData, deleteCachedView: true));
                             echo $htmlPhpExcel->process()->output();
-                        }, $printable->slug.'.xlsx');
+                        }, $printable->slug . '.xlsx');
                 }
             }
         }
@@ -136,7 +136,7 @@ class PrintInput extends Action
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
                             });
                         }
 
