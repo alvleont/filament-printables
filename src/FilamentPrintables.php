@@ -10,7 +10,7 @@ class FilamentPrintables implements Plugin
 {
     public function getId(): string
     {
-        return 'blog';
+        return 'printables';
     }
 
     public function register(Panel $panel): void

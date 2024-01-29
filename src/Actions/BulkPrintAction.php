@@ -72,7 +72,7 @@ class BulkPrintAction extends BulkAction
         if (isset($data['format'])) {
             $this->format = $data['format'];
         }
-        if (! isset($data['printable']) or $this->printable == 0) {
+        if (!isset($data['printable']) or $this->printable == false) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
@@ -86,16 +86,16 @@ class BulkPrintAction extends BulkAction
 
                         return response()->streamDownload(function () use ($printable, $records) {
                             echo Pdf::loadHtml(
-                                Blade::render($printable->template_view, ['records' => $records], deleteCachedView: true)
+                                Blade::render($printable?->template_view, ['records' => $records], deleteCachedView: true)
                             )->stream();
-                        }, $printable->slug.'-'.date('Y-m-d H:i:s').'.pdf');
+                        }, $printable->slug . '-' . date('Y-m-d H:i:s') . '.pdf');
 
                     case 'xlsx':
 
                         return response()->streamDownload(function () use ($printable, $records) {
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['records' => $records], deleteCachedView: true));
                             echo $htmlPhpExcel->process()->output();
-                        }, $printable->slug.'-'.date('Y-m-d H:i:s').'.xlsx');
+                        }, $printable->slug . '-' . date('Y-m-d H:i:s') . '.xlsx');
                 }
             }
         }
@@ -126,7 +126,7 @@ class BulkPrintAction extends BulkAction
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
                             });
                         }
 
